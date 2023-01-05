@@ -14,9 +14,9 @@ class ApiController extends Controller
     public function register(Request $request)
     {
     	//Validate data
-        $data = $request->only('first_name', 'email', 'password');
+        $data = $request->only('forename', 'email', 'password');
         $validator = Validator::make($data, [
-            'first_name' => 'required|string',
+            'forename' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|max:50'
         ]);
@@ -28,7 +28,7 @@ class ApiController extends Controller
 
         //Request is valid, create new user
         $user = User::create([
-        	'first_name' => $request->first_name,
+        	'forename' => $request->forename,
             'last_name' => 'GudIdeas',
         	'email' => $request->email,
         	'password' => bcrypt($request->password)
@@ -118,5 +118,17 @@ class ApiController extends Controller
         $user = JWTAuth::authenticate($request->token);
  
         return response()->json(['user' => $user]);
+    }
+    // 
+    public function list_users(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+        
+
+        $users = User::all();
+ 
+        return response()->json(['users' => $users]);
     }
 }
