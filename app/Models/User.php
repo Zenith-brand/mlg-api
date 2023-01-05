@@ -38,10 +38,14 @@ class User extends Authenticatable implements JWTSubject
         'date_of_birth',
         'age',
         'nationality',
-        'ethnic_origin'
-
-
-
+        'ethnic_origin',
+        'user_status',
+        'include_in_mail_shots',
+        'word',
+        'email',
+        'sms',
+        'notes',
+        'last_contact_log'
         
 
     ];

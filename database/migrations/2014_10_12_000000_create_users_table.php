@@ -32,10 +32,22 @@ class CreateUsersTable extends Migration
             $table->string('mobile_phone')->default('075600666444');
             $table->string('work_tel')->nullable();
             $table->date('date_of_birth')->default('17 01 1966');
-            $table->integer('age')->default(57);
+            $table->integer('age')->default(57); // calculate here ?
             $table->string('nationality')->default('British');
             $table->string('ethnic_origin')->nullable();
             // 
+            //Foreign Key
+            $table->foreignId('user_status')->nullable()->references('id')->on('user_statuses')->onDelete('cascade');
+            // constrained() = references('id')->on('authors')
+
+            $table->boolean('include_in_mail_shots')->default(true);
+            $table->boolean('word')->default(true);
+            // $table->boolean('email')->default(true); dublicate column name
+            $table->boolean('sms')->default(true);
+            $table->text('notes')->nullable();
+            $table->text('last_contact_log')->nullable();
+
+
 
             $table->string('password');
             $table->rememberToken();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use JWTAuth;
 use App\Models\User;
+use App\Models\User_status;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
@@ -128,6 +129,7 @@ class ApiController extends Controller
         
 
         $users = User::all();
+        // $users = User_status::all();
  
         return response()->json(['users' => $users]);
     }
