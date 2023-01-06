@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use JWTAuth;
 use App\Models\User;
 use App\Models\User_status;
+use App\Models\Client;
+use App\Models\Access_token;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +32,7 @@ class ApiController extends Controller
         //Request is valid, create new user
         $user = User::create([
         	'forename' => $request->forename,
-            'last_name' => 'GudIdeas',
+            'last_name' => 'GudIdeas', //toChange
         	'email' => $request->email,
         	'password' => bcrypt($request->password)
         ]);
@@ -45,6 +47,11 @@ class ApiController extends Controller
  
     public function authenticate(Request $request)
     {
+        //
+        // dd(json_decode($request->getContent())->access_token);
+        
+
+
         $credentials = $request->only('email', 'password');
 
         //valid credential
@@ -121,7 +128,7 @@ class ApiController extends Controller
         return response()->json(['user' => $user]);
     }
     // 
-    public function list_users(Request $request)
+    public function get_users(Request $request)
     {
         $this->validate($request, [
             'token' => 'required'
@@ -139,5 +146,16 @@ class ApiController extends Controller
 
  
         return response()->json(['users' => $users]);
+    }
+
+    public function get_clients(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+        
+        $clients = Client::all();
+ 
+        return response()->json(['clients' => $clients]);
     }
 }
