@@ -128,8 +128,15 @@ class ApiController extends Controller
         ]);
         
 
+        // $users = User::find(1)->user_status->status;
         $users = User::all();
-        // $users = User_status::all();
+        
+        // Ref
+        // $users = User::where('status_id', 1)->get();
+        // $user_status = User_status::all();
+
+        // $users = User::whereBelongsTo($user_status)->get();
+
  
         return response()->json(['users' => $users]);
     }

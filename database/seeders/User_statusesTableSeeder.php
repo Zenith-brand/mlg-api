@@ -20,7 +20,7 @@ class User_statusesTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         // And now, let's create a few User_statuss in our database:
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             User_status::create([
                 // 'status' => $faker->name,
                 'status' => 'status',

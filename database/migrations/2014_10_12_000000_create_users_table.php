@@ -37,8 +37,12 @@ class CreateUsersTable extends Migration
             $table->string('ethnic_origin')->nullable();
             // 
             //Foreign Key
-            $table->foreignId('user_status')->nullable()->references('id')->on('user_statuses')->onDelete('cascade');
+            // $table->foreignId('user_status')->nullable()->references('id')->on('user_statuses')->onDelete('cascade');
             // constrained() = references('id')->on('authors')
+
+            $table->unsignedBigInteger('user_status_id')->default(2);  //Foreign key
+
+
 
             $table->boolean('include_in_mail_shots')->default(true);
             $table->boolean('word')->default(true);
@@ -52,6 +56,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+
+            // $table->index('user_id');
         });
     }
 
