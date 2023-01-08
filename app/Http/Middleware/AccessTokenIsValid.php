@@ -24,7 +24,7 @@ class AccessTokenIsValid
         try {
             $access_token = json_decode($request->getContent())->access_token;
         } catch (Exception $e) {
-            return response()->json(['status code' => 401, 'message' => 'Access Token not found'], 401);
+            return response()->json(['status code' => 401, 'message' => 'Access Token not found', $request->getContent()], 401);
         }
 
         // initialize an empty array to store tokens
