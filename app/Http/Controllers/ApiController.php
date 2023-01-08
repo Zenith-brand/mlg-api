@@ -47,10 +47,6 @@ class ApiController extends Controller
 
     public function authenticate(Request $request)
     {
-        //
-        // dd(json_decode($request->getContent())->access_token);
-
-
 
         $credentials = $request->only('email', 'password');
 
@@ -64,7 +60,6 @@ class ApiController extends Controller
         if ($validator->fails()) {
             return response()->json(['status code' => 401, 'message' => $validator->messages()], 401);
         }
-// ['status code' => 401, 'message' => 'Authorization Token not found']
         //Request is validated
         //Crean token
         try {
