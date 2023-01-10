@@ -12,6 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -89,5 +90,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(User_status::class);
     }
+
+    public function timesheet(): HasMany
+    {
+        return $this->hasMany(timesheet::class);
+    }
+
 
 }

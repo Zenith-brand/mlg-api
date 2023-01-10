@@ -30,7 +30,7 @@ class ApiController extends Controller
         ]);
 
 
-        // $users = User::find(1)->user_status->status;
+        // $users = User::find(2)->timesheet;
         $users = User::all();
 
         // Ref
