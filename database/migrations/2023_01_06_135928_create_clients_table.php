@@ -39,6 +39,7 @@ class CreateClientsTable extends Migration
             // $table->string('primary_contact')->nullable(); User foreign key?
             $table->text('last_contact_log')->nullable(); // should it be an activity log model?
 
+            $table->softDeletes();
 
         });
     }
