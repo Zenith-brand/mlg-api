@@ -13,10 +13,12 @@ class CreateAccessTokensTable extends Migration
      */
     public function up()
     {
-        Schema::create('access_tokens', function (Blueprint $table) {
+        Schema::create('access_tokens', function (Blueprint $table) {  // rename to api
             $table->id();
             $table->timestamps();
             $table->string('token', 64);
+            // key
+            // url
         });
     }
 

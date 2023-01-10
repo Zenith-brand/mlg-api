@@ -21,6 +21,7 @@ class ClientController extends Controller
         // return response()->json(['status code' => 200, 'clients' => $client]);
 
         // return ClientResource::collection(Client::all());
+        
         $clients = ClientResource::collection(Client::all());
         return response()->json(['status code' => 200, 'clients' => $clients]);
     }
