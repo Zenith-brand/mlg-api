@@ -22,3 +22,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     ]);
 });
+
+Route::fallback(function(){
+    return response()->json([
+        'status code' => 404,
+        'message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
+});
