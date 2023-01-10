@@ -17,7 +17,12 @@ class ClientController extends Controller
 
     public function index()
     {
-        return ClientResource::collection(Client::all());
+        // $client = Client::withTrashed()->count();
+        // return response()->json(['status code' => 200, 'clients' => $client]);
+
+        // return ClientResource::collection(Client::all());
+        $clients = ClientResource::collection(Client::all());
+        return response()->json(['status code' => 200, 'clients' => $clients]);
     }
 
 
@@ -46,10 +51,7 @@ class ClientController extends Controller
             'name' => $request->name,
 
           ]);
-        return new ClientResource($client);
-        //   return [new ClientResource($client),
-        //   response()->json(['status code' => 200, 'clients' => $client])
-        // ];
+          return response()->json(['status code' => 201, 'client' => new ClientResource($client)], 201);
     }
 
     /**
@@ -62,7 +64,8 @@ class ClientController extends Controller
     {
         // $client = Client::findOrFail($id);
 
-        return new ClientResource($client);
+        // return new ClientResource($client);
+        return response()->json(['status code' => 200, 'client' => new ClientResource($client)]);
 
     }
 
@@ -80,9 +83,23 @@ class ClientController extends Controller
     //     return response()->json(['error' => 'You can only edit your own books.'], 403);
     //   }
 
-      $client->update($request->only(['name']));
 
-      return new ClientResource($client);
+        //Validate data
+        $data = $request->only('name');
+        $validator = Validator::make($data, [
+            'name' => 'required|string',
+        ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['status code' => 400, 'message' => $validator->messages()], 400);
+        }
+
+        //Request is valid, update client
+        $client->update($request->only(['name']));
+
+        // return new ClientResource($client);
+        return response()->json(['status code' => 200, 'client' => new ClientResource($client)]);
     }
 
     /**
