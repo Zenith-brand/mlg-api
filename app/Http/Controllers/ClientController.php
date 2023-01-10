@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Http\Resources\ClientResource;
+use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
@@ -28,6 +29,18 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+        //Validate data
+        $data = $request->only('name');
+        $validator = Validator::make($data, [
+            'name' => 'required|string',
+        ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['status code' => 400, 'message' => $validator->messages()], 400);
+        }
+
+        //Request is valid, create new client
         $client = Client::create([
             // 'user_id' => $request->user()->id,
             'name' => $request->name,
