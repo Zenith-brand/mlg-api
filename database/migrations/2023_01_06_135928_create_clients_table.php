@@ -38,6 +38,7 @@ class CreateClientsTable extends Migration
             // $table->string('contacts')->nullable();  Array of Users as foreign key?
             // $table->string('primary_contact')->nullable(); User foreign key?
             $table->text('last_contact_log')->nullable(); // should it be an activity log model?
+            $table->softDeletes();
 
             
 

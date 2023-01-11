@@ -29,7 +29,6 @@ class ClientResource extends JsonResource
             'date_registered' => $this->date_registered,
             'sector' => $this->sector,
             'clients_status' => $this->clients_status,
-            'clients_status' => $this->clients_status,
             'word' => $this->word,
             'sms' => $this->sms,
             'notes' => $this->notes,
