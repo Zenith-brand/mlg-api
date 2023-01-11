@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             User_statusesTableSeeder::class,
             ClientsTableSeeder::class,
-            Access_tokensTableSeeder::class,
+            ApisTableSeeder::class,
             TimesheetsTableSeeder::class
         ]);
     }

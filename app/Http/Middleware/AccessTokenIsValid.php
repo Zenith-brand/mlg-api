@@ -31,7 +31,7 @@ class AccessTokenIsValid
         $tokens = [];
 
         // search for tokens in DB and add them to the array
-        $db_tokens = DB::select('select token from access_tokens');
+        $db_tokens = DB::select('select token from apis');
         foreach ($db_tokens as $token) {
             array_push($tokens, $token->token);
         }

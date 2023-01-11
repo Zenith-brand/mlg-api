@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Access_token;
+use App\Models\Api;
 use Illuminate\Database\Seeder;
 
-class Access_tokensTableSeeder extends Seeder
+class ApisTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +15,16 @@ class Access_tokensTableSeeder extends Seeder
     public function run()
     {
         // Let's truncate our existing records to start from scratch.
-        Access_token::truncate();
+        Api::truncate();
 
         $faker = \Faker\Factory::create();
 
         // And now, let's create a few User_statuss in our database:
         for ($i = 0; $i < 3; $i++) {
-            Access_token::create([
+            Api::create([
                 // 'status' => $faker->name,
                 'token' => 1234,
+                'key' => "qwe",
             ]);
         }
     }
