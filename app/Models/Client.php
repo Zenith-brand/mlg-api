@@ -18,9 +18,9 @@ class Client extends Model
 
     public function tapActivity(Activity $activity, string $eventName)
     {
-        // Add custom IP field
+        // Add custom fields
         $activity->causer_ip = request()->ip();
-        // $activity->description = "activity.logs.message.{$eventName}";
+        $activity->log_name = "activity.logs.message.{$eventName}";
     }
 
     public function timesheet(): HasMany
