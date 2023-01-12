@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TimesheetController;
+use App\Http\Controllers\ActivityController;
 
 
 Route::post('login', [AuthController::class, 'authenticate']);
@@ -19,6 +20,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('timesheets', [TimesheetController::class, 'get_timesheets']);
     Route::apiResources([
         'clients' => ClientController::class,
+        'activity' => ActivityController::class,
+
 
     ]);
 });

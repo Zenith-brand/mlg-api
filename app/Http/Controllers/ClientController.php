@@ -18,8 +18,9 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         $pageSize = $request->page_size ?? 10;
+        
         $clients = Client::query()->paginate($pageSize);
-
+    
         return ['status code' => 200, 'client' => ClientResource::collection($clients)->response()->getData(true)];
 
         // $clients = ClientResource::collection(Client::all());
