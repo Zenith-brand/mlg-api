@@ -15,15 +15,15 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        // $client = Client::withTrashed()->count();
-        // return response()->json(['status code' => 200, 'clients' => $client]);
+        $pageSize = $request->page_size ?? 10;
+        $clients = Client::query()->paginate($pageSize);
 
-        // return ClientResource::collection(Client::all());
-        
-        $clients = ClientResource::collection(Client::all());
-        return response()->json(['status code' => 200, 'clients' => $clients]);
+        return ['status code' => 200, 'client' => ClientResource::collection($clients)->response()->getData(true)];
+
+        // $clients = ClientResource::collection(Client::all());
+        // return response()->json(['status code' => 200, 'clients' => $clients]);
     }
 
 

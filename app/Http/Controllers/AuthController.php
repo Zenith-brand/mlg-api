@@ -37,10 +37,10 @@ class AuthController extends Controller
 
         //User created, return success response
         return response()->json([
-            'status code' => 200,
+            'status code' => 201,
             'message' => 'User created successfully',
             'data' => $user
-        ], Response::HTTP_OK);
+        ], Response::HTTP_CREATED);
     }
 
     public function authenticate(Request $request)

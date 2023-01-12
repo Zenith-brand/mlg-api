@@ -27,8 +27,8 @@ class AccessKeyIsValid
         // preg_match($pattern, URL::current())
 
 
-        // Check if url 
-        dd(substr(URL::current(), 7, 9) == "127.0.0.1" ,URL::current());
+        // Check if url is allowed
+        // dd(substr(URL::current(), 7, 9) == "127.0.0.1" ,URL::current());
 
         // Check if key is provided and convert it from string to json object
         try {
