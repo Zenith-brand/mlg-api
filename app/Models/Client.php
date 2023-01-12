@@ -15,13 +15,15 @@ class Client extends Model
 
     protected $fillable = ['name'];
     protected static $logFillable = true;
+    protected static $logName = "Client";
 
     public function tapActivity(Activity $activity, string $eventName)
     {
-        // Add custom fields
+        // Add custom field
         $activity->causer_ip = request()->ip();
-        $activity->log_name = "activity.logs.message.{$eventName}";
+
     }
+
 
     public function timesheet(): HasMany
     {
