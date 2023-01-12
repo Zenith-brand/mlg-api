@@ -14,9 +14,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use Spatie\Activitylog\Traits\LogsActivity;
+
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -51,8 +53,10 @@ class User extends Authenticatable implements JWTSubject
         'notes',
         'last_contact_log'
         
-
     ];
+
+    // protected static $logAttributes = ['*'];
+    protected static $logFillable = true;
 
     /**
      * The attributes that should be hidden for serialization.
