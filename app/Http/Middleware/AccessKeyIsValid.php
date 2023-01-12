@@ -20,8 +20,16 @@ class AccessKeyIsValid
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
+
     {
         
+        // $pattern = "/^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/mg";
+        // preg_match($pattern, URL::current())
+
+
+        // Check if url 
+        dd(substr(URL::current(), 7, 9) == "127.0.0.1" ,URL::current());
+
         // Check if key is provided and convert it from string to json object
         try {
             $access_key = json_decode($request->getContent())->access_key;

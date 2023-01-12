@@ -18,9 +18,7 @@ class CreateApisTable extends Migration
             $table->timestamps();
             $table->string('token', 64);
             $table->string('key', 64);
-
-            // key
-            // url
+            $table->string('url', 64);
         });
     }
 

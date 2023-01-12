@@ -22,9 +22,9 @@ class ApisTableSeeder extends Seeder
         // And now, let's create a few User_statuss in our database:
         for ($i = 0; $i < 3; $i++) {
             Api::create([
-                // 'status' => $faker->name,
                 'token' => 1234,
                 'key' => "qwe",
+                'url' => "127.0.0.1",
             ]);
         }
     }
