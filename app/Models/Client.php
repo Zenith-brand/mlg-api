@@ -13,10 +13,22 @@ class Client extends Model
 {
     use HasFactory, SoftDeletes, LogsActivity;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'clients_status'];
     protected static $logFillable = true;
     protected static $logName = "Client";
 
+    // Search scope
+    public function scopeSearch($query, $name, $clients_status)
+    {
+        // http://127.0.0.1:8000/api/clients?page=1&page_size=5&name=n&clients_status=active
+        $searchQuery = $query->where('name', 'LIKE', '%'.$name.'%');
+        if ($clients_status != null) {
+            $searchQuery ->where('clients_status', 'LIKE', $clients_status);
+        }
+        return $searchQuery;
+    }
+
+    // Activity log
     public function tapActivity(Activity $activity, string $eventName)
     {
         // Add custom field
