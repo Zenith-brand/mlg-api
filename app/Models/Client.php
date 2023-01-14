@@ -44,6 +44,6 @@ class Client extends Model
 
     public function note()
     {
-        return $this->morphOne(Note::class, 'noteable');
+        return $this->morphMany(Note::class, 'noteable');
     }
 }

@@ -23,7 +23,7 @@ class NoteTableSeeder extends Seeder
             User::class,
             Client::class,
         ];
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             Note::create([
                 // 'client_id' => Client::all()->random()->id,
                 'title' => $faker->text(13),

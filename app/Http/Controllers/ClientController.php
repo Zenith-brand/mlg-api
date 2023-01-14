@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Note;
 use App\Http\Resources\ClientResource;
+use App\Http\Resources\NoteResource;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -128,13 +130,15 @@ class ClientController extends Controller
       return response()->json(null, 204);
     }
 
-    public function get_notes(Client $client)
+    public function get_notes(Request $request)
     {
+        $pageSize = $request->page_size ?? 5;
+        $clients = Client::query()->paginate($pageSize);
 
-        $client = Client::first()->note;
 
-
-        return response()->json(['status code' => 200, 'clients' => $client]);
+        return ['status code' => 200, 'Notes' => NoteResource::collection($clients)->response()->getData(true)];
     }
 
 }
+
+
