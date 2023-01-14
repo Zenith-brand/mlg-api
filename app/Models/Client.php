@@ -37,8 +37,13 @@ class Client extends Model
     }
 
 
-    public function timesheet(): HasMany
+    public function timesheets(): HasMany
     {
-        return $this->hasMany(timesheet::class);
+        return $this->hasMany(Timesheet::class);
+    }
+
+    public function note()
+    {
+        return $this->morphOne(Note::class, 'noteable');
     }
 }

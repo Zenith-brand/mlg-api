@@ -29,6 +29,7 @@ class ClientResource extends JsonResource
             'date_registered' => $this->date_registered,
             'sector' => $this->sector,
             'clients_status' => $this->clients_status,
+            'notes' => $this->notes,
             'word' => $this->word,
             'sms' => $this->sms,
             'notes' => $this->notes,
@@ -37,7 +38,7 @@ class ClientResource extends JsonResource
             'last_contact_log' => $this->last_contact_log,
             'date_registered' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
-            'timesheet' => $this->timesheet,
+            'timesheet' => $this->timesheets,
           ];
     }
 }

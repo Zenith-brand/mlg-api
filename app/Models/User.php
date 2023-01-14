@@ -52,7 +52,7 @@ class User extends Authenticatable implements JWTSubject
         'sms',
         'notes',
         'last_contact_log'
-        
+
     ];
 
     // protected static $logAttributes = ['*'];
@@ -98,6 +98,11 @@ class User extends Authenticatable implements JWTSubject
     public function timesheet(): HasMany
     {
         return $this->hasMany(timesheet::class);
+    }
+
+    public function note()
+    {
+        return $this->morphOne(Note::class, 'noteable');
     }
 
 

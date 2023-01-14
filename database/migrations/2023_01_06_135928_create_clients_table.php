@@ -32,7 +32,6 @@ class CreateClientsTable extends Migration
             $table->boolean('include_in_mail_shots')->default(true);
             $table->boolean('word')->default(true);
             $table->boolean('sms')->default(true);
-            $table->text('notes')->nullable();
             $table->string('consultant')->nullable();
             $table->string('devision')->nullable();
             // $table->string('contacts')->nullable();  Array of Users as foreign key?
@@ -40,7 +39,7 @@ class CreateClientsTable extends Migration
             $table->text('last_contact_log')->nullable(); // should it be an activity log model?
             $table->softDeletes();
 
-            
+
 
         });
     }

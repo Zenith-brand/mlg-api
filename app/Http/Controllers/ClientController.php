@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Note;
 use App\Http\Resources\ClientResource;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -18,16 +19,16 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
-        
+
         $searchQuery = $request->query('name');
         $clientsStatus = $request->query('clients_status');
-        
+
         $pageSize = $request->page_size ?? 10;
         $clients = Client::search($searchQuery, $clientsStatus)->paginate($pageSize);
 
-        
+
         // $clients = Client::query()->paginate($pageSize);
-    
+
         return ['status code' => 200, 'client' => ClientResource::collection($clients)->response()->getData(true)];
 
         // $clients = ClientResource::collection(Client::all());
@@ -47,7 +48,7 @@ class ClientController extends Controller
         $data = $request->only('name','clients_status');
         $validator = Validator::make($data, [
             'name' => 'required|string',
-            'clients_status' => 'required|string',            
+            'clients_status' => 'required|string',
         ]);
 
         //Send failed response if request is not valid
@@ -60,7 +61,7 @@ class ClientController extends Controller
             // 'user_id' => $request->user()->id,
             'name' => $request->name,
             'clients_status' => $request->clients_status,
-            
+
 
           ]);
           return response()->json(['status code' => 201, 'client' => new ClientResource($client)], 201);
@@ -126,4 +127,14 @@ class ClientController extends Controller
 
       return response()->json(null, 204);
     }
+
+    public function get_notes(Client $client)
+    {
+
+        $client = Client::first()->note;
+
+
+        return response()->json(['status code' => 200, 'clients' => $client]);
+    }
+
 }
