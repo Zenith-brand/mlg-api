@@ -36,6 +36,7 @@ class AddressesTableSeeder extends Seeder
             DB::table('addressables')->insert(
                 [
                     'address_id' => $faker-> numberBetween($min = 1, $max = 10),
+                    'address_type_id' => $faker->numberBetween($min = 1, $max = 2),
                     'addressable_id' => $faker -> numberBetween($min = 1, $max = 10),
                     'addressable_type' => $faker-> randomElement([ 'App\Models\Client' , 'App\Models\User'])
                 ]

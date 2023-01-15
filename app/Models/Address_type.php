@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Addressables extends Model
+class Address_type extends Model
 {
     use HasFactory;
 
-    public function address_type()
+    public function addressables()
     {
-        return $this->belongsTo(Address::class);
+        return $this->hasMany(Addressables::class);
     }
 }

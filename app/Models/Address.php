@@ -13,4 +13,10 @@ class Address extends Model
     {
         return $this->morphedByMany(Client::class, 'adressable');
     }
+
+    // public function address_type()
+    // {
+    //     return $this->hasOne(Address_type::class);
+    // }
 }
+

@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             ApisTableSeeder::class,
             TimesheetsTableSeeder::class,
             NoteTableSeeder::class,
-            AddressesTableSeeder::class
+            AddressTypesTableSeeder::class,
+            AddressesTableSeeder::class,
         ]);
     }
 }

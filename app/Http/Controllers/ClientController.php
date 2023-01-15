@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Note;
 use App\Http\Resources\ClientResource;
+use App\Http\Resources\GeneralResource;
 use App\Http\Resources\NoteResource;
+use App\Models\Address_type;
+use App\Models\Addressables;
 use App\Models\User;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -132,8 +136,11 @@ class ClientController extends Controller
 
     public function get_address_by_client(Request $request, Client $client)
     {
-        dd($client ->addresses);
-        return response()->json(['status code' => 200, 'client' => new ClientResource($client)]);
+        // dd(Client::find($client->id)->addresses->address_type);
+
+        // Address type issue ?? Working With Pivot Tables
+        // dd(Address_type::all()->addressables);
+        return response()->json(['status code' => 200, 'client' => new GeneralResource($client->addresses[0]->address_type)]);
     }
 
     // public function get_notes(Request $request)
