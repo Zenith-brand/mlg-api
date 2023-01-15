@@ -20,6 +20,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('get_user', [ApiController::class, 'get_user']);
     Route::get('all_users', [ApiController::class, 'get_users']);
     Route::get('timesheets', [TimesheetController::class, 'get_timesheets']);
+    Route::get('clients/{client}/location', [ClientController::class, 'get_address_by_client']);
+
     // Route::get('clients/notes', [ClientController::class, 'get_notes']);
     // Route::get('clients/{user}/notes', [ClientController::class, 'get_notes_by_client']);
     Route::apiResources([
@@ -34,5 +36,5 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 Route::fallback(function(){
     return response()->json([
         'status code' => 404,
-        'message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
+        'message' => 'Page Not Found. If error persists, contact info@medical-locums.co.uk'], 404);
 });

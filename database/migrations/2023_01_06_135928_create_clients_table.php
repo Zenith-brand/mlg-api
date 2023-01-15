@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('ref_number')->nullable();
-            $table->string('address')->default('Harben House, Tickford St,');
+            // $table->string('address')->default('Harben House, Tickford St,');
             $table->string('postcode')->default('MK16 9EY');
             $table->string('country')->default('United Kingdom');
             $table->string('region')->default('South Central');

@@ -130,6 +130,12 @@ class ClientController extends Controller
       return response()->json(null, 204);
     }
 
+    public function get_address_by_client(Request $request, Client $client)
+    {
+        dd($client ->addresses);
+        return response()->json(['status code' => 200, 'client' => new ClientResource($client)]);
+    }
+
     // public function get_notes(Request $request)
     // {
     //     $pageSize = $request->page_size ?? 5;

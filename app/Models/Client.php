@@ -46,4 +46,12 @@ class Client extends Model
     {
         return $this->morphMany(Note::class, 'noteable');
     }
+
+    /**
+     * Get all of the addresses for the client.
+     */
+    public function addresses()
+    {
+        return $this->morphToMany(Address::class, 'addressable');
+    }
 }

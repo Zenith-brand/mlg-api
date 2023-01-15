@@ -105,5 +105,17 @@ class User extends Authenticatable implements JWTSubject
         return $this->morphMany(Note::class, 'noteable');
     }
 
+    /**
+     * Get all of the addresses for the user.
+     */
+    public function addresses()
+    {
+        return $this->morphToMany(Address::class, 'adressable');
+    }
+
+    public function users()
+    {
+        return $this->morphedByMany(Client::class, 'adressable');
+    }
 
 }
