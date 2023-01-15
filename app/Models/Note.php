@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Note extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['title', 'content', 'noteable_id', 'noteable_type'];
     public function noteable()
     {
         return $this->morphTo();

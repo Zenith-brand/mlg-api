@@ -130,14 +130,20 @@ class ClientController extends Controller
       return response()->json(null, 204);
     }
 
-    public function get_notes(Request $request)
-    {
-        $pageSize = $request->page_size ?? 5;
-        $clients = Client::query()->paginate($pageSize);
+    // public function get_notes(Request $request)
+    // {
+    //     $pageSize = $request->page_size ?? 5;
+    //     $clients = Client::query()->paginate($pageSize);
 
 
-        return ['status code' => 200, 'Notes' => NoteResource::collection($clients)->response()->getData(true)];
-    }
+    //     return ['status code' => 200, 'Notes' => NoteResource::collection($clients)->response()->getData(true)];
+    // }
+
+    // public function get_notes_by_client(Request $request)
+    // {
+    //     dd($request);
+    //     return response()->json(['status code' => 200, 'client' => new ClientResource($client)]);
+    // }
 
 }
 

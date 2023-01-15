@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TimesheetController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ClientNoteController;
+
 
 
 Route::post('login', [AuthController::class, 'authenticate']);
@@ -18,9 +20,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('get_user', [ApiController::class, 'get_user']);
     Route::get('all_users', [ApiController::class, 'get_users']);
     Route::get('timesheets', [TimesheetController::class, 'get_timesheets']);
-    Route::get('clients/notes', [ClientController::class, 'get_notes']);
+    // Route::get('clients/notes', [ClientController::class, 'get_notes']);
+    // Route::get('clients/{user}/notes', [ClientController::class, 'get_notes_by_client']);
     Route::apiResources([
         'clients' => ClientController::class,
+        'clients.notes' => ClientNoteController::class,
         'activity' => ActivityController::class,
 
 
