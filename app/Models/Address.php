@@ -19,6 +19,11 @@ class Address extends Model
     {
         return $this->morphedByMany(User::class, 'addressable');
     }
+
+    public function candidates()
+    {
+        return $this->morphedByMany(Candidate::class, 'addressable');
+    }
     // public function address_type()
     // {
     //     return $this->hasOne(Address_type::class);

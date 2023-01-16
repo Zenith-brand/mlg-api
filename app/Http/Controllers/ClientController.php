@@ -35,7 +35,7 @@ class ClientController extends Controller
 
         // $clients = Client::query()->paginate($pageSize);
 
-        return ['status code' => 200, 'client' => ClientResource::collection($clients)->response()->getData(true)];
+        return ['status code' => 200, 'clients' => ClientResource::collection($clients)->response()->getData(true)];
 
         // $clients = ClientResource::collection(Client::all());
         // return response()->json(['status code' => 200, 'clients' => $clients]);

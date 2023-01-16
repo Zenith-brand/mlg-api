@@ -7,9 +7,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TimesheetController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ClientNoteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserNoteController;
+
 
 
 
@@ -26,9 +28,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     Route::apiResources([
         'users' => UserController::class,
+        'users.notes' => UserNoteController::class,
         'clients' => ClientController::class,
         'clients.notes' => ClientNoteController::class,
-        'users.notes' => UserNoteController::class,
+        'candidates' => CandidateController::class,
         'activity' => ActivityController::class,
     ]);
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GeneralResource;
 use Illuminate\Http\Request;
 
 use Spatie\Activitylog\Models\Activity;
@@ -13,9 +14,14 @@ class ActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ['status code' => 200, 'client' => Activity::all()->last()];
+        $pageSize = $request->page_size ?? 10;
+        $activity = Activity::query()->orderBy('created_at', 'desc')->paginate($pageSize);
+
+        return ['status code' => 200, 'user' => GeneralResource::collection($activity)->response()->getData(true)];
+
+        // return ['status code' => 200, 'client' => Activity::all()];
     }
 
     /**

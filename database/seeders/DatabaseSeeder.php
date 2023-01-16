@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             User_statusesTableSeeder::class,
             ClientsTableSeeder::class,
+            CandidatesTableSeeder::class,
             ApisTableSeeder::class,
             TimesheetsTableSeeder::class,
             NoteTableSeeder::class,

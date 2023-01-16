@@ -57,8 +57,9 @@ class User extends Authenticatable implements JWTSubject
 
     // ===== Logs Activity =====
 
-    protected static $logFillable = true;
+    // protected static $logFillable = true;
     protected static $logName = "User";
+    protected static $logAttributes = ['forename', 'email', 'created_at','tel_number'];
 
         // Activity log
         public function tapActivity(Activity $activity, string $eventName)

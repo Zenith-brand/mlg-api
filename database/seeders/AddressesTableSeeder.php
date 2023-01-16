@@ -38,7 +38,7 @@ class AddressesTableSeeder extends Seeder
                     'address_id' => $faker-> numberBetween($min = 1, $max = 40),
                     // 'address_type_id' => $faker->numberBetween($min = 1, $max = 2),
                     'addressable_id' => $faker -> numberBetween($min = 1, $max = 10),
-                    'addressable_type' => $faker-> randomElement([ 'App\Models\Client' , 'App\Models\User'])
+                    'addressable_type' => $faker-> randomElement([ 'App\Models\Client' , 'App\Models\User', 'App\Models\Candidate'])
                 ]
             );
         }
