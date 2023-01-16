@@ -57,6 +57,7 @@ class User extends Authenticatable implements JWTSubject
 
     // protected static $logAttributes = ['*'];
     protected static $logFillable = true;
+    protected static $logName = "User";
 
     /**
      * The attributes that should be hidden for serialization.
