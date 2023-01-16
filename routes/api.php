@@ -9,13 +9,12 @@ use App\Http\Controllers\TimesheetController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ClientNoteController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\UserNoteController;
 
 
 
 Route::post('login', [AuthController::class, 'authenticate']);
 Route::post('register', [AuthController::class, 'register']);
-
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('logout', [AuthController::class, 'logout']);
@@ -25,15 +24,12 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('clients/{client}/locations', [ClientController::class, 'get_address_by_client']);
     Route::get('users/{user}/locations', [UserController::class, 'get_address_by_user']);
 
-    // Route::get('clients/notes', [ClientController::class, 'get_notes']);
-    // Route::get('clients/{user}/notes', [ClientController::class, 'get_notes_by_client']);
     Route::apiResources([
         'users' => UserController::class,
         'clients' => ClientController::class,
         'clients.notes' => ClientNoteController::class,
+        'users.notes' => UserNoteController::class,
         'activity' => ActivityController::class,
-
-
     ]);
 });
 
