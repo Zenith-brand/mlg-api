@@ -140,7 +140,7 @@ class ClientController extends Controller
 
         // Address type issue ?? Working With Pivot Tables
         // dd(Address_type::all()->addressables);
-        return response()->json(['status code' => 200, 'client' => new GeneralResource($client->addresses[0]->address_type)]);
+        return response()->json(['status code' => 200, 'client' => new GeneralResource($client->addresses)]);
     }
 
     // public function get_notes(Request $request)

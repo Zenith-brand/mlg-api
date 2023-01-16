@@ -8,6 +8,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TimesheetController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ClientNoteController;
+use App\Http\Controllers\UserController;
+
 
 
 
@@ -20,11 +22,13 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('get_user', [ApiController::class, 'get_user']);
     Route::get('all_users', [ApiController::class, 'get_users']);
     Route::get('timesheets', [TimesheetController::class, 'get_timesheets']);
-    Route::get('clients/{client}/location', [ClientController::class, 'get_address_by_client']);
+    Route::get('clients/{client}/locations', [ClientController::class, 'get_address_by_client']);
+    Route::get('users/{user}/locations', [UserController::class, 'get_address_by_user']);
 
     // Route::get('clients/notes', [ClientController::class, 'get_notes']);
     // Route::get('clients/{user}/notes', [ClientController::class, 'get_notes_by_client']);
     Route::apiResources([
+        'users' => UserController::class,
         'clients' => ClientController::class,
         'clients.notes' => ClientNoteController::class,
         'activity' => ActivityController::class,

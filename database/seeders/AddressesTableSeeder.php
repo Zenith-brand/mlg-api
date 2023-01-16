@@ -26,7 +26,7 @@ class AddressesTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
 
-        for ($i = 0; $i < 75; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             Address::create([
                 'address' => $faker->unique()->address()
             ]);
@@ -35,8 +35,8 @@ class AddressesTableSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             DB::table('addressables')->insert(
                 [
-                    'address_id' => $faker-> numberBetween($min = 1, $max = 10),
-                    'address_type_id' => $faker->numberBetween($min = 1, $max = 2),
+                    'address_id' => $faker-> numberBetween($min = 1, $max = 40),
+                    // 'address_type_id' => $faker->numberBetween($min = 1, $max = 2),
                     'addressable_id' => $faker -> numberBetween($min = 1, $max = 10),
                     'addressable_type' => $faker-> randomElement([ 'App\Models\Client' , 'App\Models\User'])
                 ]
