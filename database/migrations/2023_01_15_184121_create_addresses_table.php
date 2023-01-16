@@ -16,7 +16,12 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->string('address');
+            $table->string('postcode')->default('MK16 9EY');
+            $table->string('country')->default('United Kingdom');
+            $table->string('region')->default('South Central');
+            $table->string('area')->default('Milton Keynes');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

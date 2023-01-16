@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\Contracts\Activity;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable, LogsActivity;
+    use HasApiTokens, HasFactory, Notifiable, LogsActivity, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -33,11 +33,11 @@ class User extends Authenticatable implements JWTSubject
         'password',
         'ref_number',
         'date_registered',
-        'address',
-        'postcode',
-        'country',
-        'region',
-        'area',
+        // 'address',
+        // 'postcode',
+        // 'country',
+        // 'region',
+        // 'area',
         'tel_number',
         'mobile_phone',
         'work_tel',
@@ -55,9 +55,26 @@ class User extends Authenticatable implements JWTSubject
 
     ];
 
-    // protected static $logAttributes = ['*'];
+    // ===== Logs Activity =====
+
     protected static $logFillable = true;
     protected static $logName = "User";
+
+        // Activity log
+        public function tapActivity(Activity $activity, string $eventName)
+        {
+            // Add custom field
+            $activity->causer_ip = request()->ip();
+    
+        }
+
+    // ===== Search Scope =====
+    public function scopeSearch($query, $name)
+    {
+        $searchQuery = $query->where('forename', 'LIKE', '%'.$name.'%')
+        ->orWhere('surname', 'LIKE', '%'.$name.'%');
+        return $searchQuery;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -111,12 +128,12 @@ class User extends Authenticatable implements JWTSubject
      */
     public function addresses()
     {
-        return $this->morphToMany(Address::class, 'adressable');
+        return $this->morphToMany(Address::class, 'addressable');
     }
 
-    public function users()
-    {
-        return $this->morphedByMany(Client::class, 'adressable');
-    }
+    // public function users()
+    // {
+    //     return $this->morphedByMany(Client::class, 'adressable');
+    // }
 
 }

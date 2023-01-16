@@ -19,6 +19,7 @@ class CreateApisTable extends Migration
             $table->string('token', 64);
             $table->string('key', 64);
             $table->string('url', 64);
+            $table->softDeletes();
         });
     }
 

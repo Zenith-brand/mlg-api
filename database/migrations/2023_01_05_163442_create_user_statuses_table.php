@@ -17,6 +17,7 @@ class CreateUserStatusesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('status')->default('Available');
+            $table->softDeletes();
         });
     }
 

@@ -21,13 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('ref_number')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            // 
             $table->timestamp('date_registered')->nullable();
-            $table->string('address')->default('Harben House, Tickford St,');
-            $table->string('postcode')->default('MK16 9EY');
-            $table->string('country')->default('United Kingdom');
-            $table->string('region')->default('South Central');
-            $table->string('area')->default('Milton Keynes');
+            // $table->string('address')->default('Harben House, Tickford St,');
+            // $table->string('postcode')->default('MK16 9EY');
+            // $table->string('country')->default('United Kingdom');
+            // $table->string('region')->default('South Central');
+            // $table->string('area')->default('Milton Keynes');
             $table->string('tel_number')->default('01908 533350');
             $table->string('mobile_phone')->default('075600666444');
             $table->string('work_tel')->nullable();
@@ -56,6 +55,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
 
             // $table->index('user_id');

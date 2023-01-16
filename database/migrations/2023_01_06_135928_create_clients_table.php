@@ -19,10 +19,10 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('ref_number')->nullable();
             // $table->string('address')->default('Harben House, Tickford St,');
-            $table->string('postcode')->default('MK16 9EY');
-            $table->string('country')->default('United Kingdom');
-            $table->string('region')->default('South Central');
-            $table->string('area')->default('Milton Keynes');
+            // $table->string('postcode')->default('MK16 9EY');
+            // $table->string('country')->default('United Kingdom');
+            // $table->string('region')->default('South Central');
+            // $table->string('area')->default('Milton Keynes');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('tel_number')->default('01908 533350');
             $table->string('fax_number')->nullable();
@@ -38,8 +38,6 @@ class CreateClientsTable extends Migration
             // $table->string('primary_contact')->nullable(); User foreign key?
             $table->text('last_contact_log')->nullable(); // should it be an activity log model?
             $table->softDeletes();
-
-
 
         });
     }

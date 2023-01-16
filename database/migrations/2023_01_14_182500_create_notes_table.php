@@ -20,6 +20,7 @@ class CreateNotesTable extends Migration
             $table->unsignedBigInteger('noteable_id');
             $table->string('noteable_type')->default('Client'); //Client, User, Candidate
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

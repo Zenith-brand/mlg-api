@@ -18,8 +18,8 @@ class CreateTimesheetsTable extends Migration
             $table->timestamps();
             $table->string('ref_number')->nullable();
             $table->unsignedBigInteger('user_id')->default(2);  //Foreign key
-
             $table->unsignedBigInteger('client_id')->default(2);  //Foreign key
+            $table->softDeletes();
         });
     }
 

@@ -17,9 +17,10 @@ class CreateAddressablesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('addressable_id');
             $table->unsignedBigInteger('address_id');
-            $table->unsignedBigInteger('address_type_id');
+            // $table->unsignedBigInteger('address_type_id');
             $table->string('addressable_type');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

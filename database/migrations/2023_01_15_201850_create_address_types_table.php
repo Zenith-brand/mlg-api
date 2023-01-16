@@ -18,6 +18,7 @@ class CreateAddressTypesTable extends Migration
             $table->string('type');
             // $table->unsignedBigInteger('address_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
