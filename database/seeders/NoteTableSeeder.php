@@ -29,7 +29,7 @@ class NoteTableSeeder extends Seeder
             Note::create([
                 // 'client_id' => Client::all()->random()->id,
                 'title' => $faker->text(13),
-                'content' => $faker->paragraph,
+                'content' => $faker->text(53),
                 'noteable_id' => $faker->randomDigitNotNull(),
                 'noteable_type' => $faker->randomElement($noteable),
 

@@ -20,7 +20,7 @@ class CreateCandidatesTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('tel_number')->default('01908 533350');
             $table->string('fax_number')->nullable();
-            $table->date('date_registered')->default('17 01 1966');
+            $table->date('date_registered')->default('2016-09-12');
             $table->string('sector')->nullable();
             $table->string('clients_status')->nullable();
             $table->boolean('include_in_mail_shots')->default(true);

@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('tel_number')->default('01908 533350');
             $table->string('mobile_phone')->default('075600666444');
             $table->string('work_tel')->nullable();
-            $table->date('date_of_birth')->default('17 01 1966');
+            $table->date('date_of_birth')->default('1966-11-04');
             $table->integer('age')->default(57); // calculate here ?
             $table->string('nationality')->default('British');
             $table->string('ethnic_origin')->nullable();
@@ -49,16 +49,11 @@ class CreateUsersTable extends Migration
             $table->boolean('sms')->default(true);
             $table->text('notes')->nullable();
             $table->text('last_contact_log')->nullable();
-
-
-
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
 
-
-            // $table->index('user_id');
         });
     }
 
