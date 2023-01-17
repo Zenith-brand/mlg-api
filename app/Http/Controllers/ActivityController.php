@@ -19,7 +19,7 @@ class ActivityController extends Controller
         $pageSize = $request->page_size ?? 10;
         $activity = Activity::query()->orderBy('created_at', 'desc')->paginate($pageSize);
 
-        return ['status code' => 200, 'user' => GeneralResource::collection($activity)->response()->getData(true)];
+        return ['status code' => 200, 'activity' => GeneralResource::collection($activity)->response()->getData(true)];
 
         // return ['status code' => 200, 'client' => Activity::all()];
     }

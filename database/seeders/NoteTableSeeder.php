@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Client;
 use App\Models\User;
+use App\Models\Candidate;
 use Illuminate\Database\Seeder;
 use App\Models\Note;
 
@@ -22,6 +23,7 @@ class NoteTableSeeder extends Seeder
         $noteable = [
             User::class,
             Client::class,
+            Candidate::class,
         ];
         for ($i = 0; $i < 50; $i++) {
             Note::create([

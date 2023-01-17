@@ -23,7 +23,7 @@ class UserController extends Controller
         $pageSize = $request->page_size ?? 10;
         $users = User::search($searchQuery)->paginate($pageSize);
 
-        return ['status code' => 200, 'user' => UserResource::collection($users)->response()->getData(true)];
+        return ['status code' => 200, 'users' => UserResource::collection($users)->response()->getData(true)];
     }
 
 

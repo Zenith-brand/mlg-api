@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\CandidateResource;
+use App\Http\Resources\GeneralResource;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 
@@ -32,9 +33,15 @@ class CandidateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Candidate $candidate)
     {
-        //
+        return response()->json(['status code' => 200, 'candidate' => new CandidateResource($candidate)]);
+    }
+
+    public function get_address_by_candidate(Request $request, Candidate $candidate)
+    {
+
+        return response()->json(['status code' => 200, 'candidate' => new GeneralResource($candidate->addresses)]);
     }
 
 }

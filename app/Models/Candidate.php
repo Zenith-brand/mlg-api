@@ -25,4 +25,10 @@ class Candidate extends Model
     {
         return $this->morphToMany(Address::class, 'addressable');
     }
+
+    public function note()
+    {
+        return $this->morphMany(Note::class, 'noteable');
+    }
 }
+
