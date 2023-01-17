@@ -43,5 +43,32 @@ class ApiController extends Controller
         return response()->json(['status code' => 200, 'users' => $users]);
     }
 
+    public function get_incoming_invoices(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+
+        return response()->json(['status code' => 200, 'income' => 'incoming invoices will be accessible from this route']);
+    }
+
+    public function index_invoices(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);    
+
+        return response()->json(['status code' => 200, 'invoices' => 'all invoices will be accessible from this route with parametrs to filter by client, candidate, date etc']);
+    }
+
+    public function get_outgoing_invoices(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);     
+
+        return response()->json(['status code' => 200, 'income' => 'outgoing invoices will be accessible from this route']);
+    }
+
 
 }

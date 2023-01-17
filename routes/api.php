@@ -25,6 +25,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('timesheets', [TimesheetController::class, 'get_timesheets']);
     Route::get('clients/{client}/locations', [ClientController::class, 'get_address_by_client']);
     Route::get('users/{user}/locations', [UserController::class, 'get_address_by_user']);
+    Route::get('invoices', [ApiController::class, 'index_invoices']);
+    Route::get('invoices/incoming', [ApiController::class, 'get_incoming_invoices']);
+    Route::get('invoices/outgoing', [ApiController::class, 'get_outgoing_invoices']);
+    
 
     Route::apiResources([
         'users' => UserController::class,
