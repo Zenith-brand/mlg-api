@@ -22,7 +22,7 @@ class AccessTokenIsValid
 
         // Check if token is provided and convert it from string to json object
         try {
-            $access_token = json_decode($request->getContent())->access_token;
+            $access_token = $request->header('access_token');
         } catch (Exception $e) {
             return response()->json(['status code' => 401, 'message' => 'Access Token not found'], 401);
         }

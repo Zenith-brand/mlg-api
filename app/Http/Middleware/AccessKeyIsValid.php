@@ -32,7 +32,7 @@ class AccessKeyIsValid
 
         // Check if key is provided and convert it from string to json object
         try {
-            $access_key = json_decode($request->getContent())->access_key;
+            $access_key = $request->header('access_key');
         } catch (Exception $e) {
             return response()->json(['status code' => 401, 'message' => 'Access Key not found'], 401);
         }
